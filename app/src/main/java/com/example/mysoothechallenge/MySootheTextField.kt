@@ -2,10 +2,12 @@ package com.example.mysoothechallenge
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mysoothechallenge.ui.theme.MySootheChallengeTheme
 import com.example.mysoothechallenge.ui.theme.Shapes
@@ -14,6 +16,7 @@ import com.example.mysoothechallenge.ui.theme.Shapes
 @Composable
 fun MySootheTextField(
     labelText: String,
+    leadingIcon: ImageVector? = null
 ) {
     TextField(
         value = "",
@@ -21,7 +24,15 @@ fun MySootheTextField(
         label = {
             Text(text = labelText)
         },
-        modifier = Modifier.fillMaxWidth(),
+        leadingIcon = {
+            if (leadingIcon != null) {
+                Icon(
+                    imageVector = leadingIcon,
+                    contentDescription = null
+                )
+            }
+        },
+        modifier = Modifier.fillMaxWidth()
 
     )
 }
