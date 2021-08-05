@@ -14,9 +14,11 @@ import com.example.mysoothechallenge.ui.theme.Shapes
 
 
 @Composable
-fun MySootheTextField(
+fun  MySootheTextField(
+    modifier: Modifier = Modifier,
     labelText: String,
     leadingIcon: ImageVector? = null
+
 ) {
     TextField(
         value = "",
@@ -32,7 +34,7 @@ fun MySootheTextField(
                 )
             }
         },
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
 
     )
 }

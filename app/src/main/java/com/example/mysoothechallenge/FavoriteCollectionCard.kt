@@ -27,9 +27,8 @@ import com.example.mysoothechallenge.ui.theme.Shapes
 fun FavoriteCollectionCard(collection: Collection) {
     Card(
         modifier = Modifier
-            .size(width = 192.dp, height = 56.dp)
-            .clip(shape = Shapes.medium),
-        shape = MaterialTheme.shapes.large,
+            .size(width = 192.dp, height = 56.dp),
+        elevation = 0.dp
 
     ) {
         Row(verticalAlignment = Alignment.CenterVertically,
