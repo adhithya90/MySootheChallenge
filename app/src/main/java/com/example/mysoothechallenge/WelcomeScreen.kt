@@ -21,21 +21,25 @@ import com.example.mysoothechallenge.ui.theme.MySootheButton
 import com.example.mysoothechallenge.ui.theme.MySootheChallengeTheme
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    loginButtonClicked: () -> Unit,
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colors.background)
     ) {
         WelcomeBackground()
-        ButtonColumn(modifier = Modifier.align(Alignment.Center))
+        ButtonColumn(modifier = Modifier.align(Alignment.Center),
+        loginButtonClicked = loginButtonClicked)
     }
 
 }
 
 @Composable
 private fun ButtonColumn(
-    modifier: Modifier
+    modifier: Modifier,
+    loginButtonClicked: () -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -56,7 +60,7 @@ private fun ButtonColumn(
         Spacer(modifier = Modifier.height(8.dp))
 
         MySootheButton(
-            onClick = { },
+            onClick = loginButtonClicked ,
             buttonText = "Log in",
             backgroundColor = MaterialTheme.colors.secondary
         )
@@ -108,6 +112,6 @@ private fun WelcomeBackground() {
 @Composable
 private fun WelcomeScreenPreview() {
     MySootheChallengeTheme {
-        WelcomeScreen()
+        WelcomeScreen(loginButtonClicked = {})
     }
 }

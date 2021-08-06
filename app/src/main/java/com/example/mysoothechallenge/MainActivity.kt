@@ -8,6 +8,9 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.mysoothechallenge.ui.theme.MySootheChallengeTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +18,27 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MySootheChallengeTheme {
-                HomeScreen()
+                val navController = rememberNavController()
+
+                NavHost(navController = navController, startDestination = "welcome") {
+                    composable("welcome") {
+                        WelcomeScreen(
+                            loginButtonClicked = {
+                                navController.navigate("login")
+                            }
+                        )
+                    }
+                    composable("login") {
+                        LogInScreen(
+                            loginButtonClicked = {
+                                navController.navigate("home")
+                            }
+                        )
+                    }
+                    composable("home") {
+                        HomeScreen()
+                    }
+                }
             }
         }
     }
@@ -26,6 +49,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MySootheChallengeTheme {
-        WelcomeScreen()
+        WelcomeScreen(loginButtonClicked = { })
     }
 }

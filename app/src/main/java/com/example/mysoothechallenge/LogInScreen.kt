@@ -23,7 +23,9 @@ import com.example.mysoothechallenge.ui.theme.MySootheChallengeTheme
 
 
 @Composable
-fun LogInScreen() {
+fun LogInScreen(
+    loginButtonClicked: () -> Unit
+) {
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -49,7 +51,7 @@ fun LogInScreen() {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            MySootheButton(onClick = { }, buttonText = "Log in")
+            MySootheButton(onClick =  loginButtonClicked, buttonText = "Log in")
 
             SignUpLabel()
 
@@ -108,6 +110,6 @@ private fun LoginBackground() {
 @Composable
 private fun LogInScreenPreview() {
     MySootheChallengeTheme {
-        LogInScreen()
+        LogInScreen(loginButtonClicked = {})
     }
 }

@@ -2,22 +2,48 @@ package com.example.mysoothechallenge
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Spa
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mysoothechallenge.ui.theme.MySootheChallengeTheme
+import com.google.android.material.bottomappbar.BottomAppBar
 
 
 @Composable
 fun HomeScreen() {
+    Scaffold(
+        bottomBar = {
+            BottomNavigation()
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = { }) {
+                Icon(
+                    imageVector = Icons.Default.PlayArrow,
+                    contentDescription = null
+                )
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true
+    ) {
+        HomeScreenContent(
+            modifier = Modifier.padding(it)
+        )
+    }
+
+}
+
+@Composable
+private fun HomeScreenContent(modifier: Modifier = Modifier) {
     Surface(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colors.background
     ) {
         Column {
@@ -32,6 +58,32 @@ fun HomeScreen() {
             AlignMindSection()
 
         }
+    }
+}
+
+
+@Composable
+private fun BottomNavigation() {
+    BottomAppBar(backgroundColor = MaterialTheme.colors.background) {
+        BottomNavigationItem(
+            selected = true,
+            onClick = { },
+            icon = {
+                Icon(
+                    Icons.Default.Spa,
+                    contentDescription = null,
+                )
+            },
+            label = {
+                Text(text = "Home")
+            })
+
+        BottomNavigationItem(
+            selected = false,
+            onClick = { },
+            icon = {
+                Icon(Icons.Default.AccountCircle, contentDescription = null)
+            })
     }
 }
 
